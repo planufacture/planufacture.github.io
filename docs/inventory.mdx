@@ -1,0 +1,155 @@
+---
+sidebar_position: 3
+---
+
+# Inventory
+
+The **Inventory** module provides visibility into stock levels, projected inventory, and stock movements over time.
+
+## Overview
+
+Inventory displays:
+- **Current Stock**: Real-time on-hand quantities
+- **Days Cover**: Projected stock coverage based on demand
+- **Stock Projections**: Future inventory levels over time
+- **Filtering**: View by SKU type, date range, and include options
+
+## View Tabs
+
+### Current Stock Tab
+
+![Current Stock Tab](/img/screenshots/inventory-current-stock.png)
+
+Shows current inventory levels with columns:
+- **SKU**: Product code
+- **Name**: Product description
+- **Type**: Work In Progress, Finished Good, Raw Material, Package
+- **UOM**: Unit of measure (Kg, Case, etc.)
+- **Total Stock**: Current on-hand quantity
+- **On Hold**: Quantity reserved or held
+- **Available**: Total Stock minus On Hold
+- **Date Columns**: Projected stock levels by date (e.g., 15/06/2026, 16/06/2026, 17/06/2026...)
+
+### Days Cover Tab
+
+![Days Cover Tab](/img/screenshots/inventory-days-cover.png)
+
+Shows inventory coverage in days:
+- **SKU**: Product code
+- **Name**: Product description
+- **Date Columns**: Number of days of coverage at each date
+- Helps identify when stock will run out
+- Shows "-" for items with no stock or no demand
+
+### Stock Tab
+
+![Stock Tab](/img/screenshots/inventory-stock-chart.png)
+
+Detailed stock view for a selected SKU:
+- **Select SKU dropdown**: Choose specific product to analyze
+- **Chart view**: Visual graph of stock levels over time
+  - X-axis: Timeline (dates)
+  - Y-axis: Quantity
+  - Shows projected stock movements
+  - Red vertical line indicates current date
+- **Table view**: Detailed stock events
+- **Events view**: Stock transactions and movements
+
+## Date Range Controls
+
+- **Start**: Beginning date for inventory view
+- **Days**: Number of days to display (e.g., 28 days)
+- **End**: Calculated end date
+- Date picker with calendar interface
+
+## Filtering Options
+
+### SKU Filtering
+**Select SKUs to filter** dropdown:
+- Search box to find SKUs
+- Shows SKU code and description
+- Select multiple SKUs to view
+- Checkbox selection
+
+### Include Options
+- **Consumers**: Include consumer-facing products
+- **WIP**: Include Work In Progress items
+
+### Filters Menu
+
+**SKU Types:**
+- All Types (default)
+- Finished Good
+- Raw Material
+- Work In Progress
+- Package
+
+**Horizon:**
+- Daily (default)
+- Weekly
+
+**All Types | Daily** button shows current filter selection
+
+## Common Workflows
+
+### Checking Current Stock Levels
+1. Navigate to **Inventory**
+2. Select **Current Stock** tab
+3. Use **Select SKUs to filter** to find specific products
+4. Review Total Stock, On Hold, and Available columns
+5. Check future date columns for projected levels
+
+### Reviewing Days Cover
+1. Select **Days Cover** tab
+2. Identify SKUs with low days of coverage
+3. Look for "-" or low numbers indicating potential stockouts
+4. Plan production or purchasing accordingly
+
+### Analyzing Stock Trends
+1. Select **Stock** tab
+2. Choose a SKU from the dropdown
+3. View the **Chart** to see stock trajectory
+4. Check for:
+   - Declining stock levels
+   - Stock-out events
+   - Replenishment patterns
+5. Switch to **Table** or **Events** for detailed transactions
+
+### Filtering by Product Type
+1. Click **Filters** button
+2. Under **SKU Types**, select desired type:
+   - Finished Good (end products)
+   - Raw Material (ingredients)
+   - Work In Progress (intermediate products)
+   - Package (packaging materials)
+3. Apply filter
+4. View filtered inventory
+
+### Changing Time Horizon
+1. Open **Filters**
+2. Under **Horizon**, select:
+   - **Daily**: Day-by-day view
+   - **Weekly**: Week-by-week aggregation
+3. Useful for longer-term planning
+
+## Understanding Stock Projections
+
+The date columns show projected inventory based on:
+- Current on-hand stock
+- Planned production (work orders)
+- Expected consumption (sales orders, work order requirements)
+- Lead times and schedules
+
+**Interpreting values:**
+- **Positive numbers**: Expected stock on hand
+- **0**: Stock depleted
+- **"-"**: No stock or no activity
+
+## Tips
+
+- **Monitor Days Cover** regularly to identify potential stockouts early
+- Use **Stock tab** to analyze individual SKU trends and patterns
+- **Filter by type** to focus on specific material categories
+- Check **On Hold** quantities to understand reserved vs. truly available stock
+- **Adjust date range** to see longer or shorter planning horizons
+- Use **Weekly horizon** for high-level capacity planning

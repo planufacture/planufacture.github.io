@@ -1,0 +1,289 @@
+/**
+ * Planufacture Documentation Theme
+ * Matches the main Planufacture application styling
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  /* Planufacture Brand Colors - Lighter for docs */
+  --ifm-color-primary: #4a3d6b;
+  --ifm-color-primary-dark: #3f3459;
+  --ifm-color-primary-darker: #352b4e;
+  --ifm-color-primary-darkest: #2b2340;
+  --ifm-color-primary-light: #5c4f7d;
+  --ifm-color-primary-lighter: #6e618f;
+  --ifm-color-primary-lightest: #8073a1;
+  
+  /* Secondary Colors */
+  --ifm-color-secondary: #535b77;
+  --ifm-color-success: #17dea3;
+  --ifm-color-info: #219cb0;
+  --ifm-color-warning: #ffb9b5;
+  --ifm-color-danger: #d9534f;
+  
+  /* Grays */
+  --ifm-color-gray-100: #f7f7f7;
+  --ifm-color-gray-200: #eeeeee;
+  --ifm-color-gray-300: #eaedef;
+  --ifm-color-gray-400: #d0d3d5;
+  --ifm-color-gray-500: #b6b9bb;
+  --ifm-color-gray-600: #9da0a2;
+  --ifm-color-gray-700: #848789;
+  --ifm-color-gray-800: #6a6d6f;
+  --ifm-color-gray-900: #515456;
+  
+  /* Typography */
+  --ifm-font-family-base: "Montserrat", "Open Sans", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  --ifm-heading-font-family: "Raleway", "Montserrat", sans-serif;
+  --ifm-font-family-monospace: "PT Mono", "Courier New", "SFMono-Regular", "Menlo", "Monaco", "Consolas", monospace;
+  
+  --ifm-heading-font-weight: 600;
+  --ifm-font-size-base: 16px;
+  --ifm-code-font-size: 95%;
+  
+  /* Spacing */
+  --ifm-spacing-horizontal: 1rem;
+  --ifm-spacing-vertical: 1rem;
+  
+  /* Code blocks */
+  --docusaurus-highlighted-code-line-bg: rgba(53, 43, 78, 0.1);
+  
+  /* Navbar */
+  --ifm-navbar-background-color: #352b4e;
+  --ifm-navbar-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --ifm-navbar-height: 60px;
+  --ifm-navbar-padding-vertical: 0.75rem;
+  --ifm-navbar-link-color: rgba(255, 255, 255, 0.8);
+  --ifm-navbar-link-hover-color: #ffffff;
+  
+  /* Hero/Header */
+  --ifm-hero-background-color: linear-gradient(135deg, #352b4e 0%, #535b77 100%);
+  --ifm-hero-text-color: #ffffff;
+  
+  /* Links */
+  --ifm-link-color: #4a3d6b;
+  --ifm-link-hover-color: #352b4e;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #535b77;
+  --ifm-color-primary-dark: #4a5169;
+  --ifm-color-primary-darker: #464d63;
+  --ifm-color-primary-darkest: #3a4052;
+  --ifm-color-primary-light: #5c6585;
+  --ifm-color-primary-lighter: #60698b;
+  --ifm-color-primary-lightest: #6f779d;
+  
+  --ifm-background-color: #222222;
+  --ifm-background-surface-color: #313131;
+  
+  --docusaurus-highlighted-code-line-bg: rgba(83, 91, 119, 0.3);
+}
+
+/* Custom Styling */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: var(--ifm-heading-font-weight);
+}
+
+/* Buttons */
+.button {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.2s ease-out;
+}
+
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+.button--secondary {
+  background-color: var(--ifm-color-secondary);
+  border-color: var(--ifm-color-secondary);
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: var(--ifm-navbar-shadow);
+  background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar__title {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--ifm-color-primary);
+}
+
+.navbar__link {
+  font-weight: 500;
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* Sidebar */
+.menu__link {
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.menu__link:hover {
+  background-color: rgba(74, 61, 107, 0.08);
+}
+
+.menu__link--active {
+  background-color: rgba(74, 61, 107, 0.12);
+  color: var(--ifm-color-primary-darker);
+  font-weight: 600;
+}
+
+.menu__list-item-collapsible:hover {
+  background-color: rgba(74, 61, 107, 0.05);
+}
+
+/* Code blocks */
+code {
+  font-family: var(--ifm-font-family-monospace);
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table th {
+  background-color: #f7f7f9;
+  color: var(--ifm-color-primary-darker);
+  font-weight: 600;
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+table tr:hover {
+  background-color: rgba(74, 61, 107, 0.04);
+}
+
+/* Cards/Blocks */
+.card {
+  border: 1px solid var(--ifm-color-gray-300);
+  border-radius: 4px;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(135deg, #352b4e 0%, #535b77 100%);
+  color: white;
+}
+
+.footer__title {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 600;
+  color: white;
+}
+
+.footer__link-item {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.footer__link-item:hover {
+  color: white;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #352b4e 0%, #535b77 100%);
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Content improvements */
+.markdown h1 {
+  border-bottom: 3px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
+}
+
+.markdown h2 {
+  border-bottom: 1px solid var(--ifm-color-gray-300);
+  padding-bottom: 0.3rem;
+  margin-top: 2rem;
+}
+
+/* Admonitions */
+.admonition {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Code blocks */
+.prism-code {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Navbar customization */
+.navbar {
+  background-color: #352b4e;
+  border-bottom: none;
+}
+
+.navbar__logo img {
+  height: 32px;
+  margin-right: 0;
+}
+
+.navbar__title {
+  display: none;
+}
+
+.navbar__link {
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar__link:hover {
+  color: #ffffff;
+}
+
+.navbar__item {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.navbar__item:hover {
+  color: #ffffff;
+}
+
+/* Dark mode navbar stays the same */
+[data-theme='dark'] .navbar {
+  background-color: #352b4e;
+}
