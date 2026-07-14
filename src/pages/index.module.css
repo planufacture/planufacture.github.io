@@ -4,7 +4,7 @@
  */
 
 .heroBanner {
-  padding: 5rem 0;
+  padding: 3.5rem 0 3rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -12,26 +12,27 @@
 }
 
 .heroBanner h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .heroBanner p {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
+  font-size: 1.15rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1rem 2rem;
   }
-  
+
   .heroBanner h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
-  
+
   .heroBanner p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }
 
@@ -43,50 +44,137 @@
   gap: 1rem;
 }
 
-.quickLinks {
-  padding: 4rem 0;
-  background-color: #f7f7f9;
+/* Module directory */
+.moduleDirectory {
+  padding: 3rem 0 2rem;
 }
 
-.quickLinksTitle {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: #352b4e;
+.moduleGroup {
+  margin-bottom: 2.5rem;
 }
 
-.quickLinksGrid {
+.groupTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #535b77;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #eaedef;
+}
+
+.moduleGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
 }
 
-.quickLinkCard {
+.moduleCard {
   background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  padding: 1.25rem 1.5rem;
+  border-radius: 6px;
+  border: 1px solid #eaedef;
+  transition: all 0.2s ease;
   text-decoration: none;
   color: inherit;
   display: block;
 }
 
-.quickLinkCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+.moduleCard:hover {
+  border-color: #4a3d6b;
+  box-shadow: 0 2px 12px rgba(53, 43, 78, 0.1);
   text-decoration: none;
+  transform: translateY(-2px);
 }
 
-.quickLinkCard h3 {
+.moduleCard h3 {
   color: #352b4e;
-  margin-bottom: 0.5rem;
-  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 600;
 }
 
-.quickLinkCard p {
-  color: #666;
+.moduleCard p {
+  color: #6a6d6f;
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+/* New user banner */
+.newUserBanner {
+  padding: 2rem 0 3rem;
+}
+
+.bannerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  background: linear-gradient(135deg, #f7f7f9 0%, #eaedef 100%);
+  padding: 2rem 2.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #4a3d6b;
+}
+
+.bannerTitle {
+  color: #352b4e;
+  margin-bottom: 0.25rem;
+  font-size: 1.15rem;
+}
+
+.bannerText {
+  color: #6a6d6f;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+@media screen and (max-width: 768px) {
+  .bannerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem;
+  }
+
+  .moduleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Dark mode adjustments */
+:global([data-theme='dark']) .moduleCard {
+  background: #313131;
+  border-color: #444;
+}
+
+:global([data-theme='dark']) .moduleCard:hover {
+  border-color: #6e618f;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme='dark']) .moduleCard h3 {
+  color: #c0b8d6;
+}
+
+:global([data-theme='dark']) .moduleCard p {
+  color: #9da0a2;
+}
+
+:global([data-theme='dark']) .groupTitle {
+  color: #9da0a2;
+  border-color: #444;
+}
+
+:global([data-theme='dark']) .bannerContent {
+  background: linear-gradient(135deg, #2a2a2a 0%, #313131 100%);
+  border-left-color: #6e618f;
+}
+
+:global([data-theme='dark']) .bannerTitle {
+  color: #c0b8d6;
+}
+
+:global([data-theme='dark']) .bannerText {
+  color: #9da0a2;
 }
