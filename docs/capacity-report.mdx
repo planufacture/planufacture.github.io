@@ -4,17 +4,16 @@ sidebar_position: 7
 
 # Capacity Report
 
-The **Capacity Report** provides a visual overview of production resource utilization over time, showing how capacity is being used across all production lines.
+The **Capacity Report** provides a visual overview of resource utilisation over time, showing how capacity is being used across all resources.
 
 ![Capacity Report Overview](/img/screenshots/capacity-report-overview.png)
 
 ## Overview
 
-Capacity Report displays:
-- **Summary metrics** for total capacity, availability, and utilization
+- **Summary metrics** for total capacity, availability, and utilisation
 - **Visual timeline** showing capacity usage by resource and date
 - **Daily or Weekly** aggregation views
-- **Utilization percentages** for each resource and time period
+- **Utilisation percentages** for each resource and time period
 
 ## Date Range Controls
 
@@ -27,30 +26,15 @@ Capacity Report displays:
 
 Four key metrics displayed at the top:
 
-### Total Capacity - Hours
-- **Icon**: Clock symbol
-- **Value**: Total available production hours (e.g., 1,120 hours)
-- Represents maximum theoretical capacity across all resources and time period
-
-### Available Hours
-- **Icon**: Clock with checkmark
-- **Value**: Hours available for production (e.g., 769 hours)
-- Accounts for resource availability patterns (shifts, downtime, maintenance)
-
-### Utilised Hours
-- **Icon**: Star/lightning bolt
-- **Value**: Hours actually scheduled for production (e.g., 351 hours)
-- Shows how much capacity is being used
-
-### Utilised %
-- **Icon**: Percentage symbol
-- **Value**: Percentage of available capacity being used (e.g., 31.34%)
-- **Calculation**: (Utilised Hours / Available Hours) × 100
+- **Total Capacity - Hours**: Maximum theoretical capacity across all resources for the selected period (e.g., 1,120 hours)
+- **Available Hours**: Hours available for production after accounting for availability patterns, shifts, and downtime (e.g., 769 hours)
+- **Utilised Hours**: Hours actually scheduled for production (e.g., 351 hours)
+- **Utilised %**: Percentage of total capacity being used — calculated as (Utilised Hours / Total Capacity) × 100
 
 ## Resource Filter
 
 **Select Resources** dropdown:
-- Filter which production lines to display
+- Filter which resources to display
 - Shows all resources by default
 - Useful for focusing on specific areas
 
@@ -70,7 +54,7 @@ Four key metrics displayed at the top:
 - Weekly view: Week ranges (e.g., "2026 Jun 30", "Jul 6")
 
 **Vertical axis**: Production resources (rows)
-- Each row represents a production line
+- Each row represents a resource
 - Examples visible: Fryer, Flavouring Drum 1, Flavouring Drum 2, Packers 1, Packers 2, Multi Hopper
 
 ### Capacity Bars
@@ -124,7 +108,7 @@ Each cell shows a stacked bar with:
 
 ### Filtering by Resource
 1. Click **Select Resources** dropdown
-2. Choose specific production lines
+2. Choose specific resources
 3. Focus analysis on particular resources
 4. Useful for department-specific planning
 
@@ -162,9 +146,9 @@ Each cell shows a stacked bar with:
 - Use capacity insights to inform **hiring, equipment purchases, or shift planning** decisions
 - Export or screenshot the report for capacity planning meetings
 
-## Integration with Other Modules
+## Related
 
-- **Schedule**: Drag-and-drop work orders to balance capacity
-- **Work Orders**: Review and adjust work order timing based on capacity
-- **Resources**: Configure availability patterns to increase Available Hours
-- **Demand Forecast**: Compare forecasted demand against available capacity
+- **[Schedule](/docs/schedule)**: Drag-and-drop work orders to balance capacity
+- **[Work Orders](/docs/work-orders)**: Review and adjust work order timing based on capacity
+- **[Resources](/docs/resources)**: Configure availability patterns to increase Available Hours
+- **[Demand Forecast](/docs/demand-forecast)**: Compare forecasted demand against available capacity

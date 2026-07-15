@@ -4,13 +4,12 @@ sidebar_position: 13
 
 # Processes
 
-The **Processes** module manages production process definitions, including batch parameters, resource configurations, and production network relationships.
+**Processes** manages production process definitions, including batch parameters, resource configurations, and production network relationships.
 
 ![Processes Overview](/img/screenshots/processes-overview.png)
 
 ## Overview
 
-Processes displays:
 - **List of all production processes** with associated products
 - **Process configuration** including batch parameters and timing
 - **Resource assignments** and capacity settings
@@ -113,7 +112,7 @@ For stepped/multi-stage processes:
 **Add Resource Configuration** button: Add new resource assignment
 
 **Resource Table Columns:**
-- **Resource**: Production line/equipment name
+- **Resource**: Resource name
 - **Quantity p/h**: Quantity per hour (throughput rate)
 - **Min Lot Size**: Minimum batch size
 - **Max Lot Size**: Maximum batch size
@@ -223,7 +222,7 @@ Visual network diagram:
 2. Click **Add Resource Configuration** to add new resource
 3. Or click edit icon on existing resource
 4. Set:
-   - Resource (production line)
+   - Resource
    - Quantity p/h (throughput)
    - Min Lot Size
    - Max Lot Size
@@ -293,12 +292,12 @@ Visual network diagram:
 - **Graph view** is best for visualizing overall production flow
 - **Stepped processes** allow complex multi-stage production modeling
 
-## Integration with Other Modules
+## Related
 
-- **BOMs**: Processes linked to bill of materials
-- **SKUs**: Processes produce specific output SKUs
-- **Resources**: Resource configurations define which lines can run process
-- **Work Orders**: Work orders execute processes
-- **Schedule**: Processes scheduled on assigned resources
-- **Materials**: Material requirements based on process BOMs and loss factors
-- **Capacity Report**: Process duration and resource assignments drive capacity
+- **[BOMs](/docs/bill-of-materials)**: Processes linked to bill of materials
+- **[SKUs](/docs/skus)**: Processes produce specific output SKUs
+- **[Resources](/docs/resources)**: Resource configurations define which lines can run a process
+- **[Work Orders](/docs/work-orders)**: Work orders execute processes
+- **[Schedule](/docs/schedule)**: Processes scheduled on assigned resources
+- **[Materials](/docs/materials)**: Material requirements based on process BOMs and loss factors
+- **[Capacity Report](/docs/capacity-report)**: Process duration and resource assignments drive capacity

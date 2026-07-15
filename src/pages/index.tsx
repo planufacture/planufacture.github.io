@@ -40,7 +40,7 @@ const moduleGroups: ModuleGroup[] = [
     modules: [
       {
         title: 'Schedule',
-        description: 'Gantt timeline for viewing and adjusting work orders across production lines',
+        description: 'Timeline for viewing and adjusting work orders across resources',
         link: '/docs/schedule',
       },
       {
@@ -110,7 +110,7 @@ const moduleGroups: ModuleGroup[] = [
       },
       {
         title: 'Resources',
-        description: 'Production lines, changeover times, and capacity settings',
+        description: 'Equipment, changeover times, and capacity settings',
         link: '/docs/resources',
       },
       {
@@ -166,7 +166,7 @@ function NewUserBanner() {
               New to Planufacture?
             </Heading>
             <p className={styles.bannerText}>
-              Start with the overview to understand key concepts, navigation, and how the modules connect.
+              Start with the overview to understand key concepts, navigation, and how everything connects.
             </p>
           </div>
           <Link className="button button--primary button--lg" to="/docs/intro">

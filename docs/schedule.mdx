@@ -4,15 +4,14 @@ sidebar_position: 2
 
 # Schedule
 
-The **Schedule** is a Gantt-style timeline view showing work orders planned across production lines over time.
+The **Schedule** shows work orders planned across resources over time.
 
 ![Schedule Overview](/img/screenshots/schedule-overview.png)
 
 ## Overview
 
-The Schedule displays:
 - **Timeline**: Configurable date range (start date, number of days, end date)
-- **Production Lines**: Rows showing each resources
+- **Resources**: Rows showing each resource
 - **Work Orders**: Blocks on the timeline showing scheduled production
 - **Inventory Panel**: Bottom section showing stock levels and demand for SKUs
 
@@ -28,22 +27,22 @@ The Schedule displays:
 
 ### View Options
 - **Show WIP Alerts Only**: Checkbox to filter view to work-in-progress alerts
-- **Filter Lines**: Select which production lines to display
+- **Filter Lines**: Select which resources to display
   - Select Lines With Work Orders
   - Select All / Deselect All
   - Individual line checkboxes
 - **Color Work Orders**: Toggle between coloring by Process or Status
 - **Reset Zoom**: Return to default timeline view
 
-## Production Lines
+## Resources
 
-Your configured production resources appear as rows in the schedule. Each line shows as a horizontal row with work orders scheduled as blocks on the timeline.
+Your configured resources appear as rows in the schedule. Each resource shows as a horizontal row with work orders scheduled as blocks on the timeline.
 
-Examples of production lines might include:
+Examples of resources might include:
 - Mixing equipment (mixers, kettles)
 - Processing equipment (ovens, fryers)
-- Packaging lines
-- Other production resources configured in your system
+- Packaging stations
+- Any other equipment configured in your system
 
 ## Drag-and-Drop Scheduling
 
@@ -55,7 +54,6 @@ Work orders can be moved on the timeline by dragging:
 - **Release** to drop the work order in the new location
 - System automatically recalculates start/end times and validates constraints
 
-This is a core feature for quick schedule adjustments and optimization.
 
 ## Working with Work Orders
 
@@ -83,10 +81,9 @@ Right-click on a work order block to access:
 - **Work Order Info**: View detailed information
 - **Edit Start Time/Quantity**: Modify timing and quantity
 - **Duplicate Work Order**: Create a copy
-- **Lock Work Order**: Prevent changes
-- **Release Work Order**: Send to production
+- **Status actions**: Release, lock, or change work order status
 - **Unschedule Work Order**: Remove from timeline
-- **Change Work Order Line**: Move to different production line
+- **Change Work Order Line**: Move to different resource
 - **Align to Previous Work Order**: Schedule immediately after previous order
 - **Align to Next Work Order**: Schedule immediately before next order
 - **Align to Start of Availability**: Move to earliest available time slot
@@ -132,7 +129,7 @@ Actions:
 
 ### Creating Work Orders from Schedule
 
-Right-click on a production line to access:
+Right-click on a resource row to access:
 - **Release Work Orders**: Send planned orders to production
 - **Add Work Order**: Create new work order
 - **Plan Work Order**: Schedule an existing work order
@@ -188,7 +185,7 @@ Actions:
 - **Start solve**: Run the auto-scheduler
 - **Close**: Cancel
 
-The solver automatically plans work orders across available lines based on constraints and optimization rules.
+The solver plans work orders across available lines based on constraints and optimisation rules.
 
 ## Inventory Panel
 
@@ -253,7 +250,7 @@ Right-click on a SKU row:
 
 ### Filtering the View
 1. Click filter icon or use Filter Lines
-2. Select specific production lines to display
+2. Select specific resources to display
 3. Use "Select Lines With Work Orders" to focus on active lines
 4. Apply filters
 

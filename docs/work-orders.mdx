@@ -4,17 +4,16 @@ sidebar_position: 6
 
 # Work Orders
 
-The **Work Orders** module displays all production orders, their status, scheduling, and provides tools to manage and release them.
+**Work Orders** displays all production orders, their status, scheduling, and provides tools to manage and release them.
 
 ![Work Orders Overview](/img/screenshots/work-orders-overview.png)
 
 ## Overview
 
-Work Orders shows:
 - **List of all work orders** with key details
-- **Status tracking** (SUBMITTED, NEW, CANCELLED, etc.)
+- **Status tracking** (PLANNED, NEW, SUBMITTED, READY, IN_PROGRESS, FINISHED, CANCELLED)
 - **Scheduling information** (start, end, duration)
-- **Line assignments** for production
+- **Resource assignments** for production
 - **Bulk release** functionality
 
 ## Date Range Controls
@@ -29,11 +28,7 @@ Work Orders shows:
 ### Columns
 - **Work Order Number**: Unique identifier (e.g., PROP-12k4cqp5)
 - **SKU ID**: Product code being produced
-- **Status**: Current state
-  - SUBMITTED
-  - NEW
-  - CANCELLED
-  - Other statuses
+- **Status**: Current state (PLANNED, NEW, SUBMITTED, READY, IN_PROGRESS, FINISHED, CANCELLED)
 - **Line**: Production resource assigned (e.g., Fryer, Flavouring Drum 1, 6 Row Oven)
 - **Quantity**: Amount to produce
 - **Start**: Scheduled start date and time
@@ -106,7 +101,7 @@ Click the info icon to view **Work Order Number** dialog:
 Reassign work order to different production resource:
 
 **Dialog shows:**
-- Dropdown list of available production lines
+- Dropdown list of available resources
 - Current line may be pre-selected
 
 **Actions:**
@@ -157,11 +152,11 @@ Click filter icons in column headers to filter by:
 5. Click **Save** to apply changes
 6. System recalculates End Time and Duration
 
-### Changing Production Line Assignment
+### Changing Resource Assignment
 1. Click **Additional actions icon** on work order row
 2. Select **Change Line** option
 3. **Change Line** dialog opens
-4. Select new production line from dropdown
+4. Select new resource from dropdown
 5. Click **Change Line** to apply
 6. Work order reassigned to new resource
 
@@ -186,12 +181,14 @@ Click filter icons in column headers to filter by:
 
 ## Understanding Work Order Status
 
-**Common statuses:**
-- **NEW**: Recently created, not yet released
+**Statuses:**
+- **PLANNED**: Auto-scheduled, not yet confirmed
+- **NEW**: Created, not yet released
 - **SUBMITTED**: Submitted for scheduling
+- **READY**: Released and ready for production
+- **IN_PROGRESS**: Currently in production
+- **FINISHED**: Production complete
 - **CANCELLED**: Work order cancelled
-- **IN_PROGRESS**: Currently in production (if visible)
-- **COMPLETED**: Finished production (if visible)
 
 Status indicates where the work order is in its lifecycle.
 
