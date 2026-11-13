@@ -1,0 +1,62 @@
+---
+sidebar_position: 16
+---
+
+# Programs
+
+The **Programs** module manages named production programs - repeating cycles of work that
+the scheduler places on a resource as a unit. A program is selected on a process whose
+type is **Program**, and its cycles appear on the Schedule.
+
+![Programs](/img/screenshots/programs-overview.png)
+
+## Overview
+
+- **Program list** showing each program and its cycle-time bounds
+- **Add Program** button to create one
+- **Detail page** to edit or delete a program
+
+### Programs Table Columns
+
+- **Program Name**: Unique name for the program
+- **Minimum Cycle Time**: Shortest allowed duration of one cycle
+- **Maximum Cycle Time**: Longest allowed duration of one cycle
+- **Actions**: Show icon opens the program detail page
+
+## Creating a Program
+
+Click **Add Program** and complete:
+
+- **Program Name**: Unique name
+- **Minimum Cycle Time**: Duration value with unit dropdown
+- **Maximum Cycle Time**: Duration value with unit dropdown
+
+The scheduler uses these bounds when laying out program cycles - a cycle cannot be shorter
+than the minimum or longer than the maximum.
+
+## Editing or Deleting
+
+Open a program from the list to reach the detail page, where you can edit the same fields
+and save, or delete the program entirely.
+
+## How Programs Relate to Other Setup
+
+- A **process** with type **Program** selects which program it runs (see
+  [Processes](processes))
+- **Program Constraints** ([Program Constraints](program-constraints)) define which SKU
+  attribute values may share a program cycle
+- On the **Schedule**, program cycles render as their own blocks and can be opened via the
+  program-cycle info panel
+
+## Common Workflows
+
+### Setting Up a New Program
+1. Click **Add Program**, enter the name and cycle-time bounds, and save
+2. Create or edit a **process**, set its type to **Program**, and select the new program
+3. Add **Program Constraints** if only certain product combinations may share a cycle
+
+## Tips
+
+- Cycle-time bounds are validated per cycle - set the minimum to the shortest realistic run
+  to prevent the scheduler packing cycles too tightly
+- Programs are referenced by processes, so deleting one affects every process that uses it

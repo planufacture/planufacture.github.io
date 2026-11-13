@@ -78,34 +78,48 @@ Each work order appears as a colored block showing:
 ![Work Order Context Menu](/img/screenshots/schedule-context-menu.png)
 
 Right-click on a work order block to access:
-- **Work Order Info**: View detailed information
+- **Work Order Info**: Open the work order's details in the side panel
 - **Edit Start Time/Quantity**: Modify timing and quantity
 - **Duplicate Work Order**: Create a copy
-- **Status actions**: Release, lock, or change work order status
+- **Join with…**: Join this order to neighbouring work orders as a [works order](#works-order-groups) (NEW or PLANNED orders only)
+- **Unjoin**: Dissolve the works-order group this order belongs to
+- **Lock Work Order**: Prevent changes (NEW orders)
+- **Unlock Work Order**: Allow changes again (PLANNED orders)
+- **Release Work Order**: Send to production - see [Releasing](#releasing-work-orders)
 - **Unschedule Work Order**: Remove from timeline
 - **Change Work Order Line**: Move to different resource
 - **Align to Previous Work Order**: Schedule immediately after previous order
 - **Align to Next Work Order**: Schedule immediately before next order
 - **Align to Start of Availability**: Move to earliest available time slot
 - **Recalculate End Time**: Update end time based on current parameters
+- **Use Unused WIP**: Grow the order's quantity to consume leftover WIP its feeder orders produced
 
-### Work Order Info Dialog
+For a member of a [works-order group](#works-order-groups) the menu changes: **Edit Start
+Time/Quantity**, **Duplicate**, **Unschedule**, **Change Work Order Line**, **Recalculate End
+Time** and **Use Unused WIP** are hidden, **Unjoin** appears, and the release items become
+**Release works order…** / **Unrelease works order**, which act on the whole group.
 
-![Work Order Info Dialog](/img/screenshots/schedule-work-order-info.png)
+### Work Order Info Panel
 
-Shows complete work order details:
-- **Work Order Number**
-- **Status** (e.g., NEW) with "Click to Copy" button
-- **Process**: Full process name
-- **SKU**: Code and description
-- Product type (e.g., "Finished Good")
-- **Start Time**: Scheduled start date/time
-- **End Time**: Scheduled end date/time
-- **Duration**: Total time (e.g., "2 hours 32 minutes")
-- **Quantity**: Amount to produce
+![Work Order Info Panel](/img/screenshots/schedule-work-order-info.png)
 
-Actions:
-- **Close**: Exit the dialog
+Selecting **Work Order Info** opens a panel docked at the right of the schedule rather than a
+dialog. It has two tabs:
+
+**Details:**
+- **Work Order No.**
+- **SKU Code** and **SKU Name** (with click-to-copy)
+- **SKU Type** (e.g., "Finished Good")
+- **Quantity** and **No. of Batches**
+- **Start** and **End** times
+- **Duration**, plus **Changeover** lead-in and **Total (incl. changeover)** when a changeover applies
+- **Resource**: the line(s) the order runs on
+
+**Alerts** (shown when the order has alerts):
+- Stock, capacity and scheduling alerts for the work order
+
+The panel can be pinned so it stays open while you click between work orders, and can show the
+order's related orders and dependency trail.
 
 ### Edit Start Time/Quantity Dialog
 
@@ -130,13 +144,15 @@ Actions:
 ### Creating Work Orders from Schedule
 
 Right-click on a resource row to access:
-- **Release Work Orders**: Send planned orders to production
-- **Add Work Order**: Create new work order
-- **Plan Work Order**: Schedule an existing work order
+- **Release Work Orders**: Release every NEW or PLANNED work order on the board that starts
+  before the cursor position, across all resources. (Hidden where per-order release is in use.)
+- **Add Work Order**: Create a new work order on this resource
+- **Plan Production**: Plan production for a SKU from this point on this resource
+- **New cycle**: Create a program cycle on a house (only appears on house rows)
 
 ### Planning a Work Order
 
-When you select "Plan Work Order":
+When you select **Plan Production**:
 
 **SKU Details Section:**
 - SKU code and description displayed
@@ -174,7 +190,84 @@ Actions:
   - Status
 - **Un-Highlight** / **Highlight**: Toggle highlighting of selected work orders on timeline
 
-## Auto-Scheduling
+## Works Order Groups
+
+Two or more work orders can be **joined** into a *works order*: a group that travels together
+and is released to the ERP as a single order. Use this when consecutive orders share a
+production step - for example several packaging runs that follow the same bulk production run -
+so they can be released and reported together.
+
+### How Groups Appear on the Timeline
+
+![Works Order Group](/img/screenshots/schedule-works-order-group.png)
+
+Members of a group are marked on the board:
+- A **coloured outline** around each member's bar - every member of a group shares the same
+  outline colour
+- A **sequence number** at the right end of each bar (1, 2, 3…), which is the order the
+  members run in on their shared step
+- The **tooltip** shows the group membership, e.g. "Works-order group · member 2"
+
+### Joining Work Orders
+
+![Join Work Orders Dialog](/img/screenshots/schedule-join-work-orders.png)
+
+1. Right-click a **NEW** or **PLANNED** work order and choose **Join with…**
+2. The dialog lists neighbouring work orders that could join - each with a verdict of *Can be
+   joined* or the rule that refuses it
+3. Tick one or more candidates. With more than one ticked, the whole selection is checked
+   together before the Join button is enabled
+4. Click **Join**. The members are renumbered in sequence and the group appears on the board
+
+A join can add to an existing group as well as form a new one. The system refuses a join when,
+for example, the orders:
+- are not both NEW or PLANNED
+- follow different routes or have no shared step
+- run on different resources at the shared step
+- use different raw materials
+- overlap in time, are not consecutive, or have downtime inside the group's span
+- have no common approved supplier or plant
+- one is already in another works-order group
+
+Refusals are shown in the dialog with the reason, so you can fix the orders and try again.
+
+### Moving a Group
+
+Dragging any member moves the **whole group** - all members keep their offsets from one
+another. The **Align to Previous / Next / Start of Availability** menu items move the group in
+the same way. If the move is refused, the members snap back and the reason is shown.
+
+### What Group Members Can't Do
+
+Because a member runs as part of its group, these menu items are hidden on members:
+- Edit Start Time/Quantity, Duplicate, Unschedule, Change Work Order Line, Recalculate End
+  Time, Use Unused WIP
+
+Change the group instead: move it with drag or align, or unjoin it first.
+
+### Unjoining
+
+1. Right-click any member and choose **Unjoin**
+2. Confirm in the dialog - every member becomes an ordinary work order again, in place;
+   nothing is moved
+
+A group can only be unjoined while all its members are NEW or PLANNED. Once released, the
+group must be unreleased first.
+
+## Releasing Work Orders
+
+What **Release** does depends on your setup:
+
+- **Per-order release**: releasing opens the work order's (or works order's) **release
+  screen**, where you review stock readiness and pick the specific lots/batches to allocate
+  before confirming.
+- **Otherwise**: releasing runs a **stock check** first. If materials are short, a
+  confirmation dialog lists the insufficient materials and asks you to confirm before the
+  order is sent - the ERP then picks the stock itself.
+
+For a **works-order group**, releasing acts on every member at once: choose **Release works
+order…** on any member, review the member list and stock readiness in the confirmation, and
+release. A **SUBMITTED** group member offers **Unrelease works order** to pull the group back.
 
 ![Auto-Scheduler Dialog](/img/screenshots/schedule-auto-solve.png)
 
@@ -213,9 +306,10 @@ The bottom section shows inventory status:
 - Min Days Cover
 
 ### Actions from Inventory
-Right-click on a SKU row:
+Right-click on a planned cell for a SKU:
 - **Add Work Order**: Create new production order
-- **Plan Work Order**: Schedule production for this SKU
+- **Plan Production**: Plan production for this SKU
+- **Edit Work Order**: Change an existing order covering this demand (shown when one exists)
 
 ## Common Workflows
 
@@ -236,9 +330,17 @@ Right-click on a SKU row:
 ### Planning Production from Low Stock
 1. Review Inventory panel for low Days Cover
 2. Right-click on SKU with shortage
-3. Select "Plan Work Order"
+3. Select "Plan Production"
 4. Choose line, quantity, and start date
 5. Preview and Save
+
+### Joining Work Orders into a Works Order
+1. Right-click a NEW or PLANNED work order
+2. Select "Join with…"
+3. Tick the neighbouring orders to join with
+4. Check the verdict shown for the selection
+5. Click **Join** - members are renumbered and marked with the group's colour
+6. To undo, right-click any member and choose **Unjoin**
 
 ### Aligning Work Orders
 1. Right-click on work order
@@ -270,3 +372,5 @@ Right-click on a SKU row:
 - **Find SKU in Schedule** quickly locates specific products on the timeline
 - Check **Inventory panel** for stock shortages before planning
 - Use **Align to Previous/Next** to pack the schedule and minimize idle time
+- **Join** consecutive orders that share a step into a works order so they release to the ERP as one
+- Dragging a group member moves the whole group - the outline colour and sequence numbers show membership at a glance

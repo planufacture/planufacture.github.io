@@ -1,5 +1,5 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
 ---
 
 # Bill of Materials
@@ -46,10 +46,6 @@ Each BOM row has a **detail icon** (right side) to view full BOM details.
 
 Click the detail icon to view complete bill of materials:
 
-**Page Header:**
-- Title: "BOM Details: [Process Code]"
-- **Back to BOMs** button: Return to list
-
 ### Process Information
 - **Process**: Full process name and description
 - **ID**: Process code
@@ -57,6 +53,15 @@ Click the detail icon to view complete bill of materials:
 ### Output Product Information
 - **SKU Name**: Product being produced
 - **SKU Type**: Product type (e.g., WIP, Finished Good)
+
+### Tabs
+
+The BOM details view has two tabs:
+
+- **Materials**: The material inputs for the process (below)
+- **Allocation Rules**: Rules governing which lots/batches may be allocated to each material
+  position - used to constrain stock picking on release (e.g., allergen or supplier
+  restrictions). Rules can be added per position.
 
 ### Materials Section
 

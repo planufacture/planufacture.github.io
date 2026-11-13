@@ -1,0 +1,93 @@
+---
+sidebar_position: 15
+---
+
+# Changeovers
+
+The **Changeovers** module manages changeover rules - the setup time a resource needs when
+production switches between products. Rules can be a single flat duration, a from→to matrix
+keyed on a product attribute, or a combination of other rules.
+
+![Changeover Rules](/img/screenshots/changeover-rules-overview.png)
+
+## Overview
+
+- **Rule list** with name, description, and type
+- **Add Rule** button to create a rule
+- **Rule detail** page to edit the rule, its matrix, and test it against real sequences
+
+### Rules Table Columns
+
+- **Rule Name**: Unique name for the rule
+- **Rule Description**: Optional free-text description
+- **Rule Type**: SIMPLE, MATRIX, or COMBINED badge, plus context for the type - the fixed duration for SIMPLE rules, the keying attribute for MATRIX rules, or the combine method for COMBINED rules
+- **Actions**: Show icon opens the rule detail page
+
+## Rule Types
+
+### Simple
+
+The same duration applies at every changeover, regardless of what the line was running
+before.
+
+### Matrix
+
+The duration depends on the **from → to** values of a chosen attribute (e.g., allergen,
+colour, flavour). The rule detail shows a matrix editor:
+
+- **Attribute**: the SKU attribute the matrix keys on
+- **From / To axes**: the attribute's values discovered across your SKUs
+- **Cells**: changeover duration for each pair; pairs can also be marked *Undefined* or
+  *Nothing* (no changeover)
+- **Coverage indicator**: shows which SKUs on in-scope resources are covered by the matrix
+  and flags gaps
+- **Import**: the matrix can be pasted/imported from a spreadsheet
+
+### Combined
+
+Combines multiple existing rules. Each changeover boundary evaluates every included rule
+and the results are merged by a **combine method**:
+
+- **SUM**: add the durations together
+- **MAX**: take the longest duration
+
+A combined rule cannot contain another combined rule.
+
+## Rule Settings
+
+- **Rule Name**: Required name
+- **Description**: Optional description
+- **Rule Type**: Selected at creation; fixed once saved
+- **Resets After Non-Working Time**: When enabled, non-working time returns the line to its
+  *Initial* state - the previous product is forgotten, so the next order uses the
+  initial-state changeover rather than a from→to pair. Off by default.
+
+## Testing a Rule
+
+The rule detail includes a **Test** function: pick a resource and a sequence of work orders
+and the app shows the changeover each rule contributes at every boundary - useful for
+verifying a matrix before it goes live.
+
+## Common Workflows
+
+### Creating a Matrix Rule
+1. Click **Add Rule**
+2. Enter a name, choose **MATRIX** as the type, and select the keying attribute
+3. Fill in the from→to durations in the matrix editor (or import from a spreadsheet)
+4. Check the **coverage indicator** for gaps on in-scope resources
+5. Save, then use **Test** against a real sequence
+
+### Combining Rules
+1. Create the individual rules first (e.g., a cleaning matrix + a simple size-change rule)
+2. Create a new **COMBINED** rule
+3. Add the member rules and choose **SUM** or **MAX**
+4. Test to confirm the merged durations are what you expect
+
+## Tips
+
+- A resource's **Changeover Rule** is assigned on the resource detail page (see
+  [Resources](resources))
+- Keep matrix attributes clean - the axes are built from attribute values across SKUs, so
+  inconsistent values create sparse matrices
+- Use the coverage indicator after adding new SKUs; a value with no matrix entry means an
+  unconfigured boundary

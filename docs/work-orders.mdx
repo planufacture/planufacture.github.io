@@ -1,129 +1,139 @@
 ---
-sidebar_position: 6
+sidebar_position: 3
 ---
 
 # Work Orders
 
-**Work Orders** displays all production orders, their status, scheduling, and provides tools to manage and release them.
+**Work Orders** displays all production orders, their status, scheduling, stock readiness,
+and provides tools to manage and release them.
 
 ![Work Orders Overview](/img/screenshots/work-orders-overview.png)
 
 ## Overview
 
 - **List of all work orders** with key details
-- **Status tracking** (PLANNED, NEW, SUBMITTED, READY, IN_PROGRESS, FINISHED, CANCELLED)
+- **Status tracking** (NEW, PLANNED, SUBMITTED, READY, IN_PROGRESS, FINISHED, CANCELLED)
+- **Stock readiness** - whether materials are covered for each order
 - **Scheduling information** (start, end, duration)
 - **Resource assignments** for production
-- **Bulk release** functionality
+- **Release** functionality - bulk release, or per-order release with lot picking
+
+## Tabs
+
+The page has two tabs:
+
+- **Work Orders**: The work order list described on this page
+- **Cycles**: Program cycles - repeating production programs
 
 ## Date Range Controls
 
 - **Start**: Beginning date for work order view
 - **Days**: Number of days to display (e.g., 12, 28 days)
-- **End Sat**: Calculated end date
+- **End**: Calculated end date
 - Date picker with calendar interface
 
 ## Work Orders Table
 
 ### Columns
-- **Work Order Number**: Unique identifier (e.g., PROP-12k4cqp5)
+
+- **Checkbox column**: Tick NEW or PLANNED work orders for bulk release. (Where per-order
+  release is in use, the checkbox column is hidden and each order is released through its
+  own release screen instead.)
+- **Work Order Number**: Unique identifier. Orders not yet numbered are labelled so they can
+  still be told apart.
 - **SKU ID**: Product code being produced
-- **Status**: Current state (PLANNED, NEW, SUBMITTED, READY, IN_PROGRESS, FINISHED, CANCELLED)
+- **SKU Name**: Product description (hidden by default - enable in column selection)
+- **SKU Type**: Product type (hidden by default; filterable)
+- **Status**: Current state - filterable by NEW, PLANNED, SUBMITTED, READY, IN_PROGRESS,
+  FINISHED, CANCELLED
+- **Readiness**: Stock readiness badge - **Covered** (stock in hand), **Pegged** (covered by
+  planned supply), or **Short** (insufficient stock)
 - **Line**: Production resource assigned (e.g., Fryer, Flavouring Drum 1, 6 Row Oven)
 - **Quantity**: Amount to produce
+- **Batches**: Number of batches for batch processes (hidden by default)
 - **Start**: Scheduled start date and time
+- **Start Date** / **Start Time**: Start split into separate columns (hidden by default)
 - **End**: Scheduled end date and time
 - **Duration**: Total production time (e.g., 8h 0m, 4h 0m, 1h 15m)
 
 ### Sortable Columns
-Most columns have sort icons allowing you to order by:
-- Work Order Number
-- SKU ID
-- Status
-- Line
-- Quantity
-- Start time
-- End time
-- Duration
+
+Most columns have sort icons allowing you to order by work order number, SKU, status,
+readiness, line, quantity, start/end times, and duration.
 
 ### Row Actions
+
 Each work order row has action icons on the right:
-- **Edit icon**: Modify work order details
-- **Additional actions icon**: Access more options
-- **Info icon**: View work order details
+- **Release icon**: Open the order's release screen. A member
+  of a [works-order group](/docs/schedule#works-order-groups) opens the group's release screen
+  instead - members go out together as one works order.
+- **Edit icon**: Modify start time and quantity
+- **Unschedule icon**: Remove the order from the schedule (with a confirmation)
 
-## Release Button
+## Releasing Work Orders
 
-**Release** button at top left:
-- Opens **Release Work Orders** dialog
-- Allows bulk release of work orders to production
+Release works one of two ways, depending on your setup: bulk release for several orders at
+once, or a per-order release screen for reviewing stock and picking lots.
 
-### Release Work Orders Dialog
+### Bulk Release
+
+1. Tick the checkbox on each NEW or PLANNED work order to release
+2. Click **Release** at the top left - the **Release Work Orders** dialog opens
 
 ![Release Work Orders Dialog](/img/screenshots/work-orders-release-dialog.png)
 
-**Table Columns:**
+The dialog lists the selected orders with:
 - **Work Order**: Work order number
+- **Readiness**: Stock readiness for the order
 - **SKU Code**: Product code
 - **Line**: Assigned production resource
 - **Quantity**: Amount to produce
-- **Start**: Scheduled start time
-- **End**: Scheduled end time
-- **Duration**: Production duration
+- **Start** / **End** / **Duration**
 
-**Actions:**
-- **Clear Filters**: Reset any filters
-- **Cancel**: Close dialog without releasing
-- **Release**: Send selected work orders to production
+Click **Release** to send them to production; their status changes accordingly.
 
-## Work Order Details Dialog
+### Release Screen
 
-Click the info icon to view **Work Order Number** dialog:
+To release a work order individually:
 
-**NOTE**: Warning if start time is before current time in schedule
+1. Click the **release icon** on the work order row
+2. The order's **release screen** opens, showing its stock allocation and readiness
+3. Review the positions and optionally **pick the specific lots/batches** to allocate
+4. Confirm to release - or let the ERP pick the stock by releasing without picks
 
-**Fields Displayed:**
-- **Process**: Full process name (e.g., "Baking-WIP Packing :: White 15g Retail Frying Tortillas Grey tray [1KG]")
-- **Start Time**: Date/time picker showing scheduled start
-- **End Time**: Scheduled end date/time
-- **Quantity**: Amount to produce
-- **Min Lot Size**: Minimum batch size
-- **Max Lot Size**: Maximum batch size
-- **Step Size**: Batch increment
-- **Duration**: Total time (e.g., "1 hours 7 minutes")
+A member of a works-order group opens the **works order release screen**, which lists every
+member of the group with the group's combined stock readiness, and releases them together.
+
+## Edit Work Order Dialog
+
+Click the **edit icon** to modify a work order:
+
+![Edit Work Order Dialog](/img/screenshots/work-orders-edit-dialog.png)
+
+**Fields:**
+- **Process**: Full process name (display only)
+- **Start Time**: Date/time picker - a warning shows if the start is before the current time
+- **End Time**: Calculated from start time and duration (display only)
+- **Quantity**: Editable quantity, respecting the process's lot sizing (min/max/step and
+  batch count)
+- **Duration**: Calculated duration (display only)
 
 **Actions:**
 - **Cancel**: Close without changes
-- **Save**: Apply modifications
-
-## Change Line Dialog
-
-Reassign work order to different production resource:
-
-**Dialog shows:**
-- Dropdown list of available resources
-- Current line may be pre-selected
-
-**Actions:**
-- **Close**: Cancel without changing
-- **Change Line**: Apply new line assignment
+- **Save**: Apply modifications - end time and duration recalculate
 
 ## Filtering and Controls
 
 ### Top Bar Controls
-- **Clear Filters**: Reset all applied filters
-- **Download icon**: Export work orders data
-- **Grid/List view toggle**: Change display format
+- **Release**: Bulk-release ticked work orders (hidden where per-order release is in use)
+- **Search**: Filter rows by text
+- **Column selection**: Show/hide optional columns (SKU Name, SKU Type, Batches, Start Date,
+  Start Time)
+- **Export**: Download the work orders data
 
 ### Column Filters
-Click filter icons in column headers to filter by:
-- Work Order Number
-- SKU ID
-- Status
-- Line
-- Quantity
-- Start/End times
-- Duration
+
+Columns such as Status and SKU Type offer filter dropdowns to narrow the list.
 
 ## Common Workflows
 
@@ -131,26 +141,25 @@ Click filter icons in column headers to filter by:
 1. Navigate to **Work Orders**
 2. Set **Start** date
 3. Adjust **Days** to show desired period
-4. Review work orders in table
-5. Sort by Start time to see chronological order
+4. Review work orders in table - the list sorts by start time
+
+### Checking Stock Readiness
+1. Review the **Readiness** column
+2. **Short** (red) means materials are insufficient - plan purchasing or adjust the order
+3. **Pegged** (yellow) means coverage relies on supply that hasn't arrived yet
+4. **Covered** (green) means stock is in hand
 
 ### Releasing Work Orders to Production
-1. Click **Release** button
-2. Review work orders in **Release Work Orders** dialog
-3. Verify quantities, lines, and timing
-4. Click **Release** to send to production floor
-5. Work orders change status accordingly
+1. Tick the orders to release (or use the release icon on a single order)
+2. Review the list or release screen - check readiness
+3. Confirm **Release**
+4. Work orders change status accordingly
 
 ### Editing Work Order Details
 1. Locate work order in table
-2. Click **Edit icon** (pencil) on the right
-3. **Work Order Number** dialog opens
-4. Modify:
-   - Start Time (date/time picker)
-   - Quantity
-   - Other editable fields
-5. Click **Save** to apply changes
-6. System recalculates End Time and Duration
+2. Click **Edit icon** on the right
+3. Modify Start Time or Quantity
+4. Click **Save** - End Time and Duration recalculate
 
 ### Changing Resource Assignment
 1. Click **Additional actions icon** on work order row
@@ -161,45 +170,33 @@ Click filter icons in column headers to filter by:
 6. Work order reassigned to new resource
 
 ### Filtering by Status
-1. Click filter icon in **Status** column
-2. Select desired status (e.g., SUBMITTED, NEW)
+1. Click the filter in the **Status** column
+2. Select desired statuses (e.g., SUBMITTED, NEW)
 3. Table shows only matching work orders
-4. Use **Clear Filters** to reset
-
-### Sorting Work Orders
-1. Click sort icon in any column header
-2. Table sorts ascending or descending
-3. Useful for:
-   - Finding earliest/latest start times
-   - Grouping by line
-   - Ordering by quantity or duration
-
-### Exporting Work Order Data
-1. Click **Download icon** in top bar
-2. Export work orders to file
-3. Use for offline analysis or reporting
 
 ## Understanding Work Order Status
 
 **Statuses:**
-- **PLANNED**: Auto-scheduled, not yet confirmed
-- **NEW**: Created, not yet released
-- **SUBMITTED**: Submitted for scheduling
-- **READY**: Released and ready for production
+- **NEW**: Created, not yet locked or released - can be edited, locked, joined, or released
+- **PLANNED**: Planned/locked - can be unlocked, joined, or released
+- **SUBMITTED**: Released to the ERP, awaiting confirmation
+- **READY**: Ready for production
 - **IN_PROGRESS**: Currently in production
 - **FINISHED**: Production complete
 - **CANCELLED**: Work order cancelled
 
-Status indicates where the work order is in its lifecycle.
+Only NEW and PLANNED work orders can be joined into a
+[works-order group](/docs/schedule#works-order-groups).
 
 ## Tips
 
-- Use **Release** button to send multiple work orders to production at once
+- **Tick and Release** to send multiple work orders to production at once
+- Use the **release icon** per order to review stock and pick lots before releasing
+- Check the **Readiness** column before releasing - a Short order will need manual allocation
+  or a purchase order
 - **Sort by Start** to see production sequence
 - **Filter by Line** to focus on specific production resources
-- Check **Duration** column to understand production time requirements
+- **Enable hidden columns** (SKU Type, Batches, Start Date/Time) from column selection when you
+  need more detail
 - **Edit work orders** to adjust timing or quantities before release
-- **Change Line** to balance load across production resources
 - Monitor **Status** to track work order progress
-- Use **Date Range** controls to focus on specific planning periods
-- **Export** data for capacity analysis or reporting

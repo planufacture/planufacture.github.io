@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 7
 ---
 
 # Inventory
@@ -11,7 +11,10 @@ sidebar_position: 3
 - **Current Stock**: Real-time on-hand quantities
 - **Days Cover**: Projected stock coverage based on demand
 - **Stock Projections**: Future inventory levels over time
-- **Filtering**: View by SKU type, date range, and include options
+- **Filtering**: View by SKU type, warehouse, and date range
+
+A **Warehouses** selector at the top of the page scopes every tab to the chosen warehouses
+(all warehouses by default).
 
 ## View Tabs
 
@@ -25,9 +28,12 @@ Shows current inventory levels with columns:
 - **Type**: Work In Progress, Finished Good, Raw Material, Package
 - **UOM**: Unit of measure (Kg, Case, etc.)
 - **Total Stock**: Current on-hand quantity
-- **On Hold**: Quantity reserved or held
-- **Available**: Total Stock minus On Hold
+- **On Hold**: Quantity on hold
+- **Reserved**: Quantity allocated to work orders
+- **Available**: Stock available for use
 - **Date Columns**: Projected stock levels by date (e.g., 15/06/2026, 16/06/2026, 17/06/2026...)
+
+Column headers are sortable, and a download button exports the filtered view.
 
 ### Days Cover Tab
 
@@ -39,6 +45,12 @@ Shows inventory coverage in days:
 - **Date Columns**: Number of days of coverage at each date
 - Helps identify when stock will run out
 - Shows "-" for items with no stock or no demand
+
+The Days Cover tab's **Filters** menu adds:
+- **SKU Types**: All Types, Finished, or WIP
+- **Horizon**: Daily or Weekly
+- **Show At Risk Only**: Only SKUs at risk of stocking out
+- Expand/collapse controls for the detailed rows
 
 ### Stock Tab
 
@@ -77,11 +89,10 @@ Detailed stock view for a selected SKU:
 
 ### Include Options
 - **Consumers**: Include consumer-facing products
-- **WIP**: Include Work In Progress items
 
 ### Filters Menu
 
-**SKU Types:**
+**SKU Types** (Current Stock tab - checkboxes):
 - All Types (default)
 - Finished Good
 - Raw Material
@@ -92,7 +103,8 @@ Detailed stock view for a selected SKU:
 - Daily (default)
 - Weekly
 
-**All Types | Daily** button shows current filter selection
+The **"All Types | Daily"** badge shows the current filter selection, and the download button
+exports the filtered view.
 
 ## Common Workflows
 
@@ -154,6 +166,8 @@ The date columns show projected inventory based on:
 - **Monitor Days Cover** regularly to identify potential stockouts early
 - Use **Stock tab** to analyze individual SKU trends and patterns
 - **Filter by type** to focus on specific material categories
-- Check **On Hold** quantities to understand reserved vs. truly available stock
+- Check **On Hold** and **Reserved** quantities to understand reserved vs. truly available stock
 - **Adjust date range** to see longer or shorter planning horizons
 - Use **Weekly horizon** for high-level capacity planning
+- Use **Show At Risk Only** on the Days Cover tab to focus on SKUs heading for a stockout
+- Filter by **warehouse** when managing stock across multiple locations

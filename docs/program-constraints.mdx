@@ -1,0 +1,64 @@
+---
+sidebar_position: 17
+---
+
+# Program Constraints
+
+The **Program Constraints** module manages compatibility rules - which values of a SKU
+attribute may share a program cycle. For example, a rule might say two flavours are
+compatible on the same cycle but an allergen-containing product is not.
+
+![Program Constraints](/img/screenshots/program-constraints-overview.png)
+
+## Overview
+
+- **Rule list** showing each rule, the attribute it keys on, and its values
+- **Add Constraint** button to create one
+- **Detail page** to edit the rule's allowed pairs or delete it
+
+### Rules Table Columns
+
+- **Rule Name**: Unique name for the rule
+- **Rule Description**: Optional free-text description
+- **Attribute**: The SKU attribute the rule compares
+- **Values**: The attribute values covered by the rule
+- **Actions**: Show icon opens the rule detail page
+
+## Rule Fields
+
+- **Rule Name**: Required name
+- **Description**: Optional description
+- **Attribute**: The SKU attribute whose values are checked for compatibility
+- **Allowed Pairs**: A grid pairing every value of the attribute against every other value;
+  each cell is marked **Yes** (the two values may share a cycle) or **No** (they may not).
+  A pair with no allowed entry is treated as incompatible.
+
+## Editing Allowed Pairs
+
+On the rule detail page the **Allowed Pairs** grid lists every unordered value pair with a
+Yes/No indicator. Toggle the pairs that are compatible. Pairs can also be imported from /
+exported to a spreadsheet - values that the attribute doesn't actually take are discarded
+and reported after import.
+
+## How Constraints Relate to Programs
+
+- **Programs** ([Programs](programs)) define the cycles themselves
+- A **process** of type **Program** runs a chosen program
+- Compatibility rules constrain which products (by attribute value) the scheduler may place
+  in the same cycle
+
+## Common Workflows
+
+### Creating a Compatibility Rule
+1. Click **Add Constraint**
+2. Enter a name and optional description
+3. Select the **attribute** to compare (e.g., flavour, allergen group)
+4. Mark the allowed pairs in the grid - or import them from a spreadsheet
+5. Save
+
+## Tips
+
+- Remember pairs are unordered: "A→B" and "B→A" are the same entry
+- An empty grid means *nothing* is compatible - every pair must be explicitly allowed
+- Keep the rule aligned with the changeover setup: products may be compatible for sharing a
+  cycle but still need a changeover between them (see [Changeovers](changeovers))

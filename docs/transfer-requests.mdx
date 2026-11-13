@@ -1,0 +1,74 @@
+---
+sidebar_position: 11
+---
+
+# Transfer Requests
+
+The **Transfer Requests** module shows stock that must move between warehouses to satisfy
+scheduled work orders - effectively a pick list of material movements grouped by lane.
+
+![Transfer Requirements](/img/screenshots/transfer-requests-overview.png)
+
+## Overview
+
+- **Transfer lanes** group requirements by source warehouse → destination warehouse pair
+- **Line items** show which reserved lots need to move, for which work order, and by when
+- **Overdue section** highlights requirements whose need-by date has already passed
+- **Work order links** let you jump straight to the order that needs the stock
+
+### Window Controls
+
+The header reads **"Orders needing material from [date] for [period]"**:
+
+- **From date**: a date picker for the start of the window
+- **Period**: a dropdown for the window length (e.g., 2 weeks)
+
+Only work orders needing material inside the window are shown. If nothing needs moving,
+an info banner reads *"Nothing to transfer for orders in this window."* Transfers are only
+suggested where allocation keeps an order consuming stock outside its own warehouse.
+
+## Transfer Lanes
+
+Each lane appears as a card headed by its source and destination warehouses. A lane contains
+one row per stock reservation that must be moved.
+
+### Lane Table Columns
+
+- **Need By**: The date the stock is required at the destination
+- **Work Order**: The work order consuming the stock
+- **Position**: The BOM/material position the stock fulfils
+- **SKU**: Product code and name
+- **Lot**: The reserved batch/lot to transfer
+- **Supplier**: Supplier of the lot (shown as a code badge, or a dash if none)
+- **Quantity**: Reserved quantity to transfer
+- **Actions**: External-link icon opens the work order detail page
+
+Rows are sorted by **Need By** ascending by default; all columns support sorting and
+searching where indicated.
+
+## Overdue Section
+
+An **Overdue** block sits above the lanes whenever requirements have slipped past their
+need-by date. Its heading shows the overdue range (e.g., "Overdue: needed on 12 Nov" or
+"Overdue: needed between 10 Nov and 14 Nov"), and it lists the affected lanes so the most
+urgent transfers are visible first.
+
+## Common Workflows
+
+### Planning the Day's Transfers
+1. Check the **Overdue** section first - action anything past due
+2. Work down the remaining lanes in need-by order
+3. Use the work-order link to confirm the consuming order before releasing the lot
+
+### Tracing a Requirement
+1. Find the SKU in the relevant lane's table
+2. Note the **Lot** and **Quantity**
+3. Click the open-work-order icon to see where the stock will be consumed
+
+## Tips
+
+- Requirements are generated automatically from scheduled work orders - rescheduling or
+  unscheduling an order changes what appears here
+- A lane only exists while it has outstanding lines; once everything is moved it disappears
+- Combine with **Materials** → Available to check whether the source warehouse actually has
+  the reserved stock on hand

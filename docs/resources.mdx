@@ -1,5 +1,5 @@
 ---
-sidebar_position: 14
+sidebar_position: 18
 ---
 
 # Resources
@@ -31,6 +31,14 @@ sidebar_position: 14
 - **Availability**: Availability pattern name (e.g., "Mon to Fri")
 - **Changeover Duration**: Setup/changeover time between work orders
 - **Display Order**: Numeric order for display in schedules
+- **Category**: Optional resource category used for grouping
+- **Location**: Optional resource location
+- **Warehouse**: Optional linked warehouse
+
+### Warehouses Tab
+
+A second **Warehouses** tab lists warehouse storage locations with columns for
+**Code**, **Name**, and **Resources** (the resources linked to each warehouse).
 
 ### Sortable Columns
 All columns have sort icons allowing you to order by:
@@ -48,10 +56,6 @@ Each resource row has a **detail icon** (right side) to view and edit resource d
 ## Resource Details View
 
 Click the detail icon to view and edit resource configuration:
-
-**Page Header:**
-- Title: "Resource Details: [Resource Name]"
-- **Back to Resources** button: Return to list
 
 ### Basic Information Section
 
@@ -80,10 +84,6 @@ Click the detail icon to view and edit resource configuration:
 ## Add New Resource
 
 Click **Add Resource** to create a new resource:
-
-**Page Header:**
-- Title: "Add New Resource"
-- **Back** button: Return to resources list
 
 **Fields:**
 - **Resource ID**: Enter unique resource ID

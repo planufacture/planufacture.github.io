@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 4
 ---
 
 # Capacity Report
@@ -29,7 +29,7 @@ Four key metrics displayed at the top:
 - **Total Capacity - Hours**: Maximum theoretical capacity across all resources for the selected period (e.g., 1,120 hours)
 - **Available Hours**: Hours available for production after accounting for availability patterns, shifts, and downtime (e.g., 769 hours)
 - **Utilised Hours**: Hours actually scheduled for production (e.g., 351 hours)
-- **Utilised %**: Percentage of total capacity being used — calculated as (Utilised Hours / Total Capacity) × 100
+- **Utilised %**: Percentage of total capacity being used - calculated as (Utilised Hours / Total Capacity) × 100
 
 ## Resource Filter
 
@@ -61,18 +61,22 @@ Four key metrics displayed at the top:
 
 Each cell shows a stacked bar with:
 - **Dark purple/navy**: Unused available capacity
-- **Teal/turquoise**: Utilized capacity (scheduled production)
+- **Green**: Utilized capacity (scheduled production)
+- **Red**: Utilized capacity over 100% - the resource is booked beyond its capacity
 - **Percentage label**: Utilization percentage for that resource/period
+
+Hover over a bar for a tooltip with the exact hours behind the percentage.
 
 **Reading the bars:**
 - **0%**: No production scheduled
 - **Low % (e.g., 20-40%)**: Light utilization, spare capacity available
 - **High % (e.g., 80-100%)**: Heavy utilization, limited spare capacity
-- **Over 100%**: Over-capacity (if shown in red/different color)
+- **Over 100%** (red): Over-capacity - work must be moved or the period's availability increased
 
 ### Color Coding
 
-- **Teal/Turquoise**: Scheduled production (utilized capacity)
+- **Green**: Scheduled production (utilized capacity)
+- **Red**: Over-capacity utilization (above 100%)
 - **Dark purple/Navy**: Available but unused capacity
 - **Gray**: Unavailable time (outside availability patterns)
 

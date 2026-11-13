@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 9
 ---
 
 # Batch Trace
@@ -41,10 +41,6 @@ The initial view shows a table of all SKUs with stock:
 
 When you click on a SKU, you see all batches/lots for that product:
 
-**Page Header:**
-- Title: "Batches — [Product Name] [SKU]"
-- **Back to SKUs** button: Return to main view
-
 ### Warehouse Filter
 - **Dropdown**: Filter batches by warehouse/location
 - Options include:
@@ -58,9 +54,13 @@ When you click on a SKU, you see all batches/lots for that product:
 
 ### Batch Table Columns
 - **Trace ID**: Unique batch/lot identifier
-- **Warehouse**: Storage location
+- **Warehouse**: Storage warehouse
+- **Location**: Storage location within the warehouse
+- **Country of Origin**: Where the batch originated
+- **Plant**: Producing plant
+- **Supplier**: Supplier the batch came from
 - **Quantity**: Amount in this batch
-- **On Hold**: Reserved quantity
+- **On Hold**: Quantity on hold
 - **Available**: Usable quantity
 - **Use By**: Expiration or best-by date
 
@@ -71,10 +71,6 @@ When you click on a SKU, you see all batches/lots for that product:
 ## Batch Details View
 
 Clicking on a specific batch shows detailed information:
-
-**Page Header:**
-- Title: "Batch Details"
-- **Back to Batches** button: Return to batches list
 
 ### Batch Details Section
 - **Trace ID**: Unique batch identifier
@@ -96,6 +92,9 @@ Shows complete transaction history for the batch:
   - Withdrawn (consumed/used)
 - **Qty**: Quantity change (positive for additions, negative for withdrawals)
 - **Balance**: Running balance after transaction
+- **Reserved**: Quantity reserved by the transaction
+- **Reserved Balance**: Running reserved balance
+- **Location**: Where the transaction happened
 - **Reference**: Related document/order number
 - **Comment**: Additional notes
 

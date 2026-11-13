@@ -1,5 +1,5 @@
 ---
-sidebar_position: 13
+sidebar_position: 14
 ---
 
 # Processes
@@ -49,10 +49,6 @@ Each process row has a **detail icon** (right side) to view full process details
 
 Click the detail icon to view and edit process configuration:
 
-**Page Header:**
-- Title: "Process Details: [Process Name] ([Process Code])"
-- **Back to Processes** button: Return to list
-
 ### Basic Information Section
 
 **Open Production Network** button: View production network for this process
@@ -71,7 +67,14 @@ Click the detail icon to view and edit process configuration:
 #### Config Tab
 
 **Process Type:**
-- Dropdown selector (e.g., Batch)
+- Dropdown selector with the following options:
+  - **Continuous Flow**: A process that produces output continuously at a steady rate
+  - **Batch**: A discrete batch process (most common)
+  - **Stepped Batch Release**: A multi-stage batch process with per-step configuration
+  - **Continuous Flow Release**: A continuous flow process with staged output release
+  - **Program**: A process driven by a program cycle (used with program-based scheduling)
+
+The parameter fields shown below the dropdown depend on the selected type.
 
 **Batch Parameters:**
 
@@ -97,6 +100,15 @@ Click the detail icon to view and edit process configuration:
 
 **Checkbox:**
 - **Reserved Until Empty**: Hold resources until process completes
+
+**Continuous Flow Parameters** (shown for Continuous Flow / Continuous Flow Release):
+- **Production Delay**: Time before output begins
+- **Loss Factor**: Material loss percentage
+- **Availability Delay**: Delay before output is available
+
+**Program Parameters** (shown for Program):
+- **Program**: Dropdown to select the program this process runs
+- **Availability Delay**: Delay before output is available
 
 **Save Changes** button: Apply modifications
 
@@ -130,10 +142,6 @@ For stepped/multi-stage processes:
 ## Production Network View
 
 Click **Open Production Network** to see process relationships:
-
-**Page Header:**
-- Title: "Production Network for: [Process Code] - [Process Name]"
-- **Back to Process Details** button: Return to details
 
 ### View Options
 

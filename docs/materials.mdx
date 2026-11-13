@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 8
 ---
 
 # Materials
@@ -76,14 +76,18 @@ Shows "0" for dates with no projected demand.
 - Select multiple suppliers
 - Useful for supplier-specific planning
 
-### Additional Controls
-- **Weekly**: Toggle for weekly aggregation (instead of daily)
-- **Filters**: Advanced filtering options
-- **Export**: Export data to file
+### Filters Menu
+- **Horizon**: Daily (default) or Weekly aggregation
+- **Materials filter**: Show **All** materials, only those **Required** for work orders, or only
+  those going **Short**
+- **Export**: Export the filtered data to file
 
 ## Action Buttons
 
-- **Create Purchase Order**: Generate PO for selected materials with shortages
+Tick the checkbox on one or more material rows to enable:
+- **Create Purchase Order**: Generate a PO for the selected materials
+- **Transfer Request**: Currently disabled - warehouse transfers are managed from the
+  [Transfer Requests](/docs/transfer-requests) module
 
 ## Common Workflows
 
@@ -120,9 +124,9 @@ Shows "0" for dates with no projected demand.
 
 ### Creating Purchase Orders
 1. Identify materials with shortages or low stock
-2. Click **Create Purchase Order** button
-3. System guides through PO creation
-4. Select supplier, quantities, and delivery dates
+2. Tick the checkbox on each material to order
+3. Click **Create Purchase Order** button
+4. The dialog previews the purchase orders to create - review and confirm
 
 ## Understanding Projections
 
@@ -148,5 +152,6 @@ The date columns show projected stock based on:
 - Switch to **Forecast** tab for longer-term planning (91+ days)
 - **Export** data for offline analysis or sharing with procurement team
 - Check **Minimum Stock Level** to maintain safety stock buffers
-- Use **Weekly** toggle for high-level capacity planning
-- Use **Show Shortage** filter to quickly focus on materials that need attention
+- Use the **Weekly** horizon for high-level capacity planning
+- Use the **Short** filter to focus only on materials heading for a shortage
+- Check **Transfer Requests** for stock that needs moving between warehouses
