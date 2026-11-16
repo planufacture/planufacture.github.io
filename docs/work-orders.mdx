@@ -104,6 +104,44 @@ To release a work order individually:
 A member of a works-order group opens the **works order release screen**, which lists every
 member of the group with the group's combined stock readiness, and releases them together.
 
+### Allocating Stock
+
+The release screen lists the order's material **Inputs** - each BOM position and what it
+requires. For a works-order group, inputs drawn by every member are shown first, then each
+member's own inputs.
+
+**Inputs table columns:**
+- **Position**: BOM position number
+- **SKU**: Material code and name
+- **Required Quantity**: Amount needed
+- **Status**: **Covered** (backed by on-hand stock), **Pegged** (covered by planned supply -
+  a producing work order or purchase order receipt that hasn't landed yet), or
+  **Short** (insufficient stock)
+- **Short**: The unmet quantity, if any
+- **Unit**: Unit of measure
+- **Trace Numbers**: Count of lots picked for the position
+
+Where stock is short, a banner notes how many positions are short and that the ERP will
+reserve what it can.
+
+**Picking lots:**
+
+1. Click **Select Trace IDs** on a position row
+2. The **Trace Select** dialog lists the candidate lots for that material, showing Trace
+   Number, Material, Expiry, Available quantity, Warehouse, Location, Supplier, Plant,
+   and Country
+3. Tick lots and adjust the **Reserving** quantity on each - the header shows Required vs
+   Reserving and turns green when the picks match the requirement
+4. The dialog warns when picks are short, when a lot breaches the position's allocation
+   rules, or when stock is still maturing
+5. **Confirm** to apply the picks
+
+Picks can be changed at any time before release - reopen **Select Trace IDs** and adjust.
+Release without picks to let the ERP choose stock itself (earliest expiry first).
+
+Picks are sent to the ERP as requests - the ERP confirms the firm reservation. Any position
+you don't pick is left to the ERP's automatic selection.
+
 ## Edit Work Order Dialog
 
 Click the **edit icon** to modify a work order:
