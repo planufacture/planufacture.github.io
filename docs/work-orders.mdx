@@ -72,15 +72,13 @@ Each work order row has action icons on the right:
 
 ## Releasing Work Orders
 
-Release works one of two ways, depending on your setup: bulk release for several orders at
-once, or a per-order release screen for reviewing stock and picking lots.
-
 ### Bulk Release
 
-1. Tick the checkbox on each NEW or PLANNED work order to release
-2. Click **Release** at the top left - the **Release Work Orders** dialog opens
+Release several orders at once:
 
-![Release Work Orders Dialog](/img/screenshots/work-orders-release-dialog.png)
+1. Tick the checkbox on each NEW or PLANNED work order to release
+2. Click the **Release** button in the table toolbar (left of the search box) - the
+   **Release Work Orders** dialog opens
 
 The dialog lists the selected orders with:
 - **Work Order**: Work order number
@@ -90,21 +88,20 @@ The dialog lists the selected orders with:
 - **Quantity**: Amount to produce
 - **Start** / **End** / **Duration**
 
-Click **Release** to send them to production; their status changes accordingly.
+Click **Release** to send them to production; their status changes accordingly. The ERP
+selects the stock.
 
-### Release Screen
+### Release Screen and Stock Allocation
 
-To release a work order individually:
+Opening a single order's release screen lets you review stock readiness and choose the
+specific lots the order will consume before releasing.
 
-1. Click the **release icon** on the work order row
-2. The order's **release screen** opens, showing its stock allocation and readiness
-3. Review the positions and optionally **pick the specific lots/batches** to allocate
-4. Confirm to release - or let the ERP pick the stock by releasing without picks
+To open it, click the **release icon** on the work order row (or use **Release Work Order**
+on the work order's context menu in the [Schedule](schedule)). A member of a works-order
+group opens the **works order release screen** instead, which lists every member of the
+group and releases them together.
 
-A member of a works-order group opens the **works order release screen**, which lists every
-member of the group with the group's combined stock readiness, and releases them together.
-
-### Allocating Stock
+![Release Screen](/img/screenshots/work-orders-release-dialog.png)
 
 The release screen lists the order's material **Inputs** - each BOM position and what it
 requires. For a works-order group, inputs drawn by every member are shown first, then each
