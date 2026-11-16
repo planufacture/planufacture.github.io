@@ -65,8 +65,9 @@ const config: Config = {
         generateLLMsTxt: true,
         generateLLMsFullTxt: false,
         generateMarkdownFiles: true,
+        // Getting Started first; the rest follow alphabetically.
+        includeOrder: ['docs/intro.mdx'],
         excludeImports: true,
-        logLevel: 'quiet',
       },
     ],
   ],

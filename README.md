@@ -53,6 +53,12 @@ sidebar_position: 14
 Only describe what the page actually covers. Pages under `src/pages/` (for example
 `/markdown-page`) are not docs and are not included.
 
+`npm run build` first runs `scripts/check-doc-descriptions.mjs`, which fails the build if a
+doc has no description or one longer than 150 characters.
+
+`npm start` does not serve `/llms.txt` or the `.md` copies, because they're only written by a
+production build. To point the assistant at local docs, run `npm run build && npm run serve`.
+
 ## Deployment
 This repository is configured to deploy to GitHub Pages using a GitHub Actions workflow.
 
