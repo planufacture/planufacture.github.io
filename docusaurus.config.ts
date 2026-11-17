@@ -50,6 +50,28 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      // Generates /llms.txt and a Markdown copy of each doc (/docs/<page>.md) at
+      // build time. The in-app AI assistant (planufacture-chat) reads both.
+      // llms.txt lines use each doc's front-matter `description`.
+      'docusaurus-plugin-llms',
+      {
+        title: 'Planufacture',
+        description:
+          'User guide for Planufacture, the production planning and scheduling platform: scheduling, work orders, demand, inventory, supply and setup.',
+        rootContent:
+          'Each link below is a Markdown copy of one page of the Planufacture user guide.',
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: false,
+        generateMarkdownFiles: true,
+        // Getting Started first; the rest follow alphabetically.
+        includeOrder: ['docs/intro.mdx'],
+        excludeImports: true,
+      },
+    ],
+  ],
+
   themes: [
     [
       '@easyops-cn/docusaurus-search-local',
