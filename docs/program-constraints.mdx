@@ -1,5 +1,5 @@
 ---
-description: "Set which SKU attribute values may share a program cycle, using an allowed-pairs grid that can be imported from a spreadsheet."
+description: "Set which SKU attribute values may share a program cycle: pick an attribute, then tick allowed pairs in a matrix or import them from a spreadsheet."
 sidebar_position: 17
 ---
 
@@ -29,17 +29,21 @@ compatible on the same cycle but an allergen-containing product is not.
 
 - **Rule Name**: Required name
 - **Description**: Optional description
-- **Attribute**: The SKU attribute whose values are checked for compatibility
-- **Allowed Pairs**: A grid pairing every value of the attribute against every other value;
-  each cell is marked **Yes** (the two values may share a cycle) or **No** (they may not).
-  A pair with no allowed entry is treated as incompatible.
+- **Attribute**: The SKU attribute whose values are checked for compatibility. Choose an
+  attribute and click **Apply** - the values it actually takes across the catalogue are
+  discovered and used to build the matrix
+- **Allowed Pairs**: A checkbox matrix pairing every discovered value against every other
+  value. Tick a pair to allow those two values to share a cycle; a pair left unticked may
+  not share one
 
 ## Editing Allowed Pairs
 
-On the rule detail page the **Allowed Pairs** grid lists every unordered value pair with a
-Yes/No indicator. Toggle the pairs that are compatible. Pairs can also be imported from /
-exported to a spreadsheet - values that the attribute doesn't actually take are discarded
-and reported after import.
+![Add Program Constraint](/img/screenshots/program-constraints-add.png)
+
+The **Allowed Pairs** matrix lists every unordered value pair - since pairs are unordered,
+only the upper triangle is tickable. Tick the pairs that are compatible. Pairs can also be
+imported from / exported to a spreadsheet - values that the attribute doesn't actually take
+are discarded and reported after import.
 
 ## How Constraints Relate to Programs
 
@@ -53,8 +57,9 @@ and reported after import.
 ### Creating a Compatibility Rule
 1. Click **Add Constraint**
 2. Enter a name and optional description
-3. Select the **attribute** to compare (e.g., flavour, allergen group)
-4. Mark the allowed pairs in the grid - or import them from a spreadsheet
+3. Select the **attribute** to compare (e.g., flavour, allergen group) and click **Apply**
+4. The matrix fills with the values that attribute takes across your SKUs - tick the
+   allowed pairs, or import them from a spreadsheet
 5. Save
 
 ## Tips
